@@ -104,7 +104,7 @@ a:hover, a:focus{
 
 /*Moves the toolbar text down*/
 .nav {
-    margin-top: 5px !important;
+    margin-top: 5px !important; 
 }
 .usermenu {
     margin-top: 5px !important;
@@ -409,6 +409,9 @@ a:hover{
 /*navbar styling*/
 .navbar-inverse {
     border-bottom: 3px #fff solid;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+    z-index: 12001;
 }
 
 /*popup styling*/
