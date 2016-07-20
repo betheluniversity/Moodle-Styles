@@ -22,6 +22,9 @@ input[type="submit"], input[type="text"]+button, .fp-upload-btn.btn-primary {
     text-shadow: 0 0px 0px #fff !important;
     box-shadow: inset 0 1px 0 #fff, 0 0px 0px #fff !important;
 }
+#rubric-criteria input {
+    font-size: 12px;
+}
 
 /*.navbar-inner.noshadow {
     -webkit-box-shadow: none !important;
@@ -545,6 +548,9 @@ div[role=main]>h2{
     text-indent: 0em;
 }
 .criteria>tbody>.criterion>.controls>.moveup>input {
+    text-indent: 0em;
+}
+.criteria>tbody>.criterion>.controls>.duplicate>input {
     text-indent: 0em;
 }
 .criteria>tbody>.criterion>.levels>table>tbody>tr>td>.level-wrapper>.delete>input {
