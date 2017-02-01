@@ -102,7 +102,7 @@ a:hover, a:focus{
 
 /*changes toolbar "BU Moodle" to bethel logo*/
 .brand {
-    background: url(http://cdn1.bethel.edu/images/logo--moodle.png);
+    background: url(https://cdn1.bethel.edu/images/logo--moodle.png);
     height: 30px;
     background-size: 210px 30px;
     width: 210px;
