@@ -219,3 +219,28 @@ a:hover, a:active, a:focus {
   color: white;
   background-color: #0070a8;
 }
+
+#page-my-index .page-header-image a {
+	display: none;
+}
+
+#page-my-index .page-header-headings {
+	margin-top: .7em;
+}
+
+#page-my-index #page-header button.btn {
+	margin: 0;
+}
+
+#page-my-index .page-header-headings h1 {
+    visibility: hidden;
+}
+
+#page-my-index .page-header-headings h1::after {
+	content: 'Dashboard';
+    color: inherit;
+    display: inline;
+    visibility: visible;
+    position: absolute;
+    left: 0;
+}
