@@ -35,23 +35,8 @@ $navbar-light-active-color: #fdc60a !default;
 body {
 	font-family: "Times New Roman", Times, serif !important;
 }
-#page * {
-	font-size: 103.5% !important;
-}
-#page span {
-    height: 100% !important;
-}
-#page i.icon, #page img.icon {
-    vertical-align: unset !important;
-}
-#page img.icon {
-    margin-top: inherit;
-}
-#page.icon {
-	margin-top: .2em;
-}
-#page span.drag {
-    height: unset !important;
+* {
+	font-size: 101% !important;
 }
 
 .navbar-brand {
