@@ -1,0 +1,35 @@
+mysql -s -u moodle_admin -p -h moodleprod-20150812.cpxu0frrf8e8.us-east-1.rds.amazonaws.com moodle_prod -e "SELECT CONCAT('https://moodle.bethel.edu/course/view.php?id=',mdl_page.course) as COURSE_URL, CONCAT('https://moodle.bethel.edu/mod/page/view.php?id=',mdl_course_modules.id) as PAGE_URL FROM mdl_page inner join mdl_course_modules on (mdl_page.id=mdl_course_modules.instance) WHERE mdl_page.content LIKE '%www.lynda.com%' and mdl_page.course=mdl_course_modules.course;" > /tmp/original.csv
+
+SELECT
+  mdl_user.firstname,
+  mdl_user.lastname,
+  mdl_user.email,
+  CONCAT('https://moodle.bethel.edu/mod/page/view.php?id=',mdl_course_modules.id) AS page_url
+FROM
+  mdl_course_modules JOIN
+  mdl_page ON (mdl_page.id=mdl_course_modules.instance) JOIN
+  mdl_course ON (mdl_page.course=mdl_course.id) JOIN 
+  mdl_context ON (mdl_context.instanceid=mdl_course.id AND mdl_context.contextlevel = '50') LEFT JOIN
+  mdl_role_assignments ON (mdl_role_assignments.contextid = mdl_context.id AND mdl_role_assignments.roleid = '3') JOIN
+  mdl_user ON (mdl_user.id = mdl_role_assignments.userid)
+WHERE
+  mdl_course_modules.id in (SELECT mdl_course_modules.id FROM mdl_page inner join mdl_course_modules on
+  (mdl_page.id=mdl_course_modules.instance) WHERE mdl_page.content LIKE '%www.lynda.com%' and
+  mdl_page.course=mdl_course_modules.course)
+ORDER BY mdl_user.lastname ASC;
+
+SELECT mdl_user.firstname, mdl_user.lastname, mdl_user.email, CONCAT('https://moodle.bethel.edu/mod/page/view.php?id=',mdl_course_modules.id) AS page_url FROM mdl_course_modules JOIN mdl_page ON (mdl_page.id=mdl_course_modules.instance) JOIN mdl_course ON (mdl_page.course=mdl_course.id) JOIN mdl_context ON (mdl_context.instanceid=mdl_course.id AND mdl_context.contextlevel = '50') LEFT JOIN mdl_role_assignments ON (mdl_role_assignments.contextid = mdl_context.id AND mdl_role_assignments.roleid = '3') LEFT JOIN mdl_user ON (mdl_user.id = mdl_role_assignments.userid) WHERE mdl_course_modules.id in (SELECT mdl_course_modules.id FROM mdl_page inner join mdl_course_modules on (mdl_page.id=mdl_course_modules.instance) WHERE mdl_page.content LIKE '%www.lynda.com%' and mdl_page.course=mdl_course_modules.course) ORDER BY mdl_user.lastname ASC;
+
+
+
+mysql -s -u moodle_admin -p -h moodleprod-20150812.cpxu0frrf8e8.us-east-1.rds.amazonaws.com moodle_prod -e "SELECT mdl_user.firstname, mdl_user.lastname, mdl_user.email, CONCAT('https://moodle.bethel.edu/mod/page/view.php?id=',mdl_course_modules.id) AS page_url FROM mdl_course_modules JOIN mdl_page ON (mdl_page.id=mdl_course_modules.instance) JOIN mdl_course ON (mdl_page.course=mdl_course.id) JOIN mdl_context ON (mdl_context.instanceid=mdl_course.id AND mdl_context.contextlevel = '50') LEFT JOIN mdl_role_assignments ON (mdl_role_assignments.contextid = mdl_context.id AND mdl_role_assignments.roleid = '3') LEFT JOIN mdl_user ON (mdl_user.id = mdl_role_assignments.userid) WHERE mdl_course_modules.id in (SELECT mdl_course_modules.id FROM mdl_page inner join mdl_course_modules on (mdl_page.id=mdl_course_modules.instance) WHERE mdl_page.content LIKE '%www.lynda.com%' and mdl_page.course=mdl_course_modules.course) ORDER BY mdl_user.lastname ASC;" > /tmp/moodle.csv
+
+mysql -s -u moodle_admin -p -h moodledev-20190405.cpxu0frrf8e8.us-east-1.rds.amazonaws.com moodle_dev -e "SELECT mdl_user.firstname, mdl_user.lastname, mdl_user.email, CONCAT('https://moodle.bethel.edu/mod/page/view.php?id=',mdl_course_modules.id) AS page_url FROM mdl_course_modules JOIN mdl_page ON (mdl_page.id=mdl_course_modules.instance) JOIN mdl_course ON (mdl_page.course=mdl_course.id) JOIN mdl_context ON (mdl_context.instanceid=mdl_course.id AND mdl_context.contextlevel = '50') LEFT JOIN mdl_role_assignments ON (mdl_role_assignments.contextid = mdl_context.id AND mdl_role_assignments.roleid = '3') LEFT JOIN mdl_user ON (mdl_user.id = mdl_role_assignments.userid) WHERE mdl_course_modules.id in (SELECT mdl_course_modules.id FROM mdl_page inner join mdl_course_modules on (mdl_page.id=mdl_course_modules.instance) WHERE mdl_page.content LIKE '%www.lynda.com%' and mdl_page.course=mdl_course_modules.course) ORDER BY mdl_user.lastname ASC;" > /tmp/original.csv
+
+moodledev-20190405.cpxu0frrf8e8.us-east-1.rds.amazonaws.com
+moodle_dev
+moodle_admin
+wZGFUYXb8RWUfY76MB3G
+
+
+wZGFUYXb8RWUfY76MB3G
